@@ -1,5 +1,4 @@
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters,
-                        InlineQueryHandler
+from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, InlineQueryHandler
 from telegram import InlineQueryResultArticle, InputTextMessageContent
 import logging
 
@@ -41,7 +40,7 @@ def inline_caps(bot, update):
         )
     )
     bot.answer_inline_query(update.inline_query.id, results)
-    
+
 
 #Add handlers (/start, message) to the dispatcher. Allows passing arguments for /caps
 start_handler = CommandHandler('start', start)
