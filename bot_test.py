@@ -1,4 +1,4 @@
-from telegram.ext import Updater, CommandHandler
+from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import logging
 
 #Log issues
@@ -12,14 +12,28 @@ Token = "749231366:AAFs4JxqBW-OBZGcf8BaqjwMtQIHdsHRQkM"
 updater = Updater(token=Token)
 dispatcher = updater.dispatcher
 
-#Function to activate on sending a message to the bot
+#Function to activate on sending /start, a message, /caps... to the bot
 def start(bot, update):
     bot.send_message(chat_id=update.message.chat_id, text="I'm a bot, please talk to me!")
 
 
-#Add handler (command /start) to the dispatcher
+def echo(bot, update):
+    bot.send_message(chat_id=update.message.chat_id, text=update.message.text)
+
+
+def caps(bot, update, args):
+    text_caps = ' '.join(args).upper()
+    bot.send_message(chat_id=update.message.chat_id, text=text_caps)
+
+
+#Add handlers (/start, message) to the dispatcher. Allows passing arguments for /caps
 start_handler = CommandHandler('start', start)
+echo_handler = MessageHandler(Filters.text, echo)
+caps_handler = CommandHandler('caps', caps, pass_args=True)
+
 dispatcher.add_handler(start_handler)
+dispatcher.add_handler(echo_handler)
+dispatcher.add_handler(caps_handler)
 
 #Activate bot
 updater.start_polling()
