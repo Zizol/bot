@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, InlineQueryHandler
+from telegram.ext import (Updater, CommandHandler, MessageHandler, Filters,
+                            InlineQueryHandler)
 from telegram import InlineQueryResultArticle, InputTextMessageContent
 import logging
 
@@ -18,20 +19,24 @@ dispatcher = updater.dispatcher
 
 #Function to activate on sending /start, a message, /caps... to the bot
 def start(bot, update):
-    bot.send_message(chat_id=update.message.chat_id, text="I'm a bot, please talk to me!")
+    bot.send_message(chat_id=update.message.chat_id,
+                        text="I'm a bot, please talk to me!")
 
 
 def echo(bot, update):
-    bot.send_message(chat_id=update.message.chat_id, text=update.message.from_user.first_name)
+    bot.send_message(chat_id=update.message.chat_id,
+                        text=update.message.from_user.first_name)
 
 
 def caps(bot, update, args):
     text_caps = ' '.join(args).upper()
-    bot.send_message(chat_id=update.message.chat_id, text=text_caps)
+    bot.send_message(chat_id=update.message.chat_id,
+                        text=text_caps)
 
 
 def unknown(bot, update):
-    bot.send_message(chat_id=update.message.chat_id, text="Sorry, I didn't understand that command.")
+    bot.send_message(chat_id=update.message.chat_id,
+                        text="Sorry, I didn't understand that command.")
 
 from telegram.error import (TelegramError, Unauthorized, BadRequest,
                             TimedOut, ChatMigrated, NetworkError)
