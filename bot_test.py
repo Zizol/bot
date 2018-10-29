@@ -3,6 +3,7 @@
 
 from telegram.ext import (Updater, CommandHandler, MessageHandler, Filters,
                             InlineQueryHandler)
+from telegram.ext.dispatcher import run_async
 from telegram import InlineQueryResultArticle, InputTextMessageContent
 import logging
 
@@ -65,7 +66,21 @@ from telegram.error import (TelegramError, Unauthorized, BadRequest,
 #
 # dispatcher.add_error_handler(error_callback)
 
-
+# from functools import wraps
+# from telegram import ChatAction
+#
+# def send_action(action):
+#     """Sends `action` while processing func command."""
+#
+#     def decorator(func):
+#         @wraps(func)
+#         def command_func(*args, **kwargs):
+#             bot, update = args
+#             bot.send_chat_action(chat_id=update.message.chat_id, action=action)
+#             func(bot, update, **kwargs)
+#         return command_func
+#
+#     return decorator
 
 #Add handlers (/start, message) to the dispatcher. Allows passing arguments for /caps
 start_handler = CommandHandler('start', start)
@@ -78,5 +93,6 @@ dispatcher.add_handler(echo_handler)
 dispatcher.add_handler(caps_handler)
 dispatcher.add_handler(unknown_handler)
 
-#Activate bot
-updater.start_polling()
+if __name__ == "__main__":
+    #Activate bot
+    updater.start_polling()
