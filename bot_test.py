@@ -1,15 +1,19 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+"""Bonjour
+"""
 
+import logging
 from telegram.ext import (Updater, CommandHandler, MessageHandler, Filters,
-                            InlineQueryHandler)
+                          InlineQueryHandler)
 from telegram.ext.dispatcher import run_async
 from telegram import InlineQueryResultArticle, InputTextMessageContent
-import logging
+from telegram.error import (TelegramError, Unauthorized, BadRequest,
+                            TimedOut, ChatMigrated, NetworkError)
 
 #Log issues
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-                     level=logging.INFO)
+                    level=logging.INFO)
 
 #Authentication token obtained through botfather
 Token = "749231366:AAFs4JxqBW-OBZGcf8BaqjwMtQIHdsHRQkM"
@@ -21,26 +25,25 @@ dispatcher = updater.dispatcher
 #Function to activate on sending /start, a message, /caps... to the bot
 def start(bot, update):
     bot.send_message(chat_id=update.message.chat_id,
-                        text="I'm a bot, please talk to me!")
+                     text="I'm a bot, please talk to me!")
 
 
 def echo(bot, update):
     bot.send_message(chat_id=update.message.chat_id,
-                        text=update.message.from_user.first_name)
+                     text=update.message.from_user.first_name)
 
 
 def caps(bot, update, args):
     text_caps = ' '.join(args).upper()
     bot.send_message(chat_id=update.message.chat_id,
-                        text=text_caps)
+                     text=text_caps)
 
 
 def unknown(bot, update):
     bot.send_message(chat_id=update.message.chat_id,
-                        text="Sorry, I didn't understand that command.")
+                     text="Sorry, I didn't understand that command.")
 
-from telegram.error import (TelegramError, Unauthorized, BadRequest,
-                            TimedOut, ChatMigrated, NetworkError)
+
 
 # def error_callback(bot, update, error):
 #     try:
