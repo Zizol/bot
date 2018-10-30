@@ -4,6 +4,7 @@
 """
 
 import logging
+import os
 from telegram.ext import (Updater, CommandHandler, MessageHandler, Filters,
                           InlineQueryHandler)
 from telegram.ext.dispatcher import run_async
@@ -16,7 +17,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
                     level=logging.INFO)
 
 #Authentication token obtained through botfather
-Token = "749231366:AAFs4JxqBW-OBZGcf8BaqjwMtQIHdsHRQkM"
+Token = os.environ['TOKEN']
 
 #Initialize and link updater (input) and dispatcher (output)
 updater = Updater(token=Token)
