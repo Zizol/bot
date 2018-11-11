@@ -1,5 +1,13 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
+CODE_OF_CONDUCT.md
+CONTRIBUTING.md
+LICENSE
+PULL_REQUEST_TEMPLATE
+SUMMARY.md
+.github/
+htmlcov/
+.DS_Store
 *.py[cod]
 *$py.class
 
