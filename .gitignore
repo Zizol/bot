@@ -7,6 +7,7 @@ PULL_REQUEST_TEMPLATE
 SUMMARY.md
 .github/
 htmlcov/
+hey/
 .DS_Store
 *.py[cod]
 *$py.class
