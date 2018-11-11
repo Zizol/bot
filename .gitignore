@@ -3,11 +3,13 @@ __pycache__/
 CODE_OF_CONDUCT.md
 CONTRIBUTING.md
 LICENSE
-PULL_REQUEST_TEMPLATE
+PULL_REQUEST_TEMPLATE.md
+README.md
 SUMMARY.md
 .github/
 htmlcov/
 hey/
+Procfile
 .DS_Store
 *.py[cod]
 *$py.class
